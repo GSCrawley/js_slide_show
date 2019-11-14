@@ -11,6 +11,7 @@
             flex-direction: row;
             position: absolute;
             transform: translate3d(0,0,0);
+            transition: 1000ms;
         }
 
         .slide-show {
@@ -42,8 +43,27 @@
 
         <script>
             // JS Here
+            function makeSlideshow(slidesId) {
+                const slides = document.getElementById(slidesId)
+                const slidesInner = slides.querySelector('.slides-inner')
+                const images = slidesInner.querySelectorAll('img')
+            
+                let index = 0 
 
-        </script>
+                setInterval( function() {
+                    index += 1
+                    if (index === images.length) {
+                        index = 0
+                    }
+
+                    slidesInner.style.transform = `translate3d(${index * -1200}px, 0, 0)`
+console.log(index*-1200)
+                }, 2000 )
+            }
+
+            makeSlideshow('slides')
+            
+        </script>   
 
     </body>
 </html>
