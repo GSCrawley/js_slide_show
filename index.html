@@ -11,7 +11,7 @@
             flex-direction: row;
             position: absolute;
             transform: translate3d(0,0,0);
-            transition: 1000ms;
+            transition: 2000ms;
         }
 
         .slide-show {
@@ -26,6 +26,11 @@
             height: 400px;
             margin: auto;
         } 
+
+        #slides-2 {
+            width: 300px;
+            height: 169px;
+        }
         </style>
     </head>
 
@@ -41,13 +46,26 @@
              </div>
         </div>
 
+        <div id="slides-2" class="slide-show">
+            <div class="slides-inner">
+                <img src="images/hellebore-pollen-300-169.jpg" width="300" height="169" alt="hellebore">
+                <img src="images/li-pollen-300-169.jpg" width="300" height="169" alt="li-pollen">
+                <img src="images/pollen-300-169.jpg" width="300" height="169" alt="pollen">
+                <img src="images/spores-300-169.jpg" width="300" height="169" alt="spores">
+                <img src="images/zsa-300-169.jpg" width="300" height="169" alt="zsa">
+
+
+
+            </div>
+        </div>
         <script>
             // JS Here
             function makeSlideshow(slidesId) {
                 const slides = document.getElementById(slidesId)
                 const slidesInner = slides.querySelector('.slides-inner')
                 const images = slidesInner.querySelectorAll('img')
-            
+                
+                const slidesWidth = slides.clientWidth
                 let index = 0 
 
                 setInterval( function() {
@@ -56,13 +74,13 @@
                         index = 0
                     }
 
-                    slidesInner.style.transform = `translate3d(${index * -1200}px, 0, 0)`
-console.log(index*-1200)
+                    slidesInner.style.transform = `translate3d(${index * -slidesWidth}px, 0, 0)`
+
                 }, 2000 )
             }
 
             makeSlideshow('slides')
-            
+            makeSlideshow('slides-2')
         </script>   
 
     </body>
